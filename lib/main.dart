@@ -4,6 +4,8 @@ import 'package:tourism_company/login_screen.dart';
 import 'package:tourism_company/sign_up.dart';
 import 'package:tourism_company/splash_screen.dart';
 
+import 'home_screen.dart';
+
 
 bool show = true;
 void main() async {
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: const SplashScreen()
+      home: const HomeScreen()
     );
   }
 }

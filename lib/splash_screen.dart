@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tourism_company/login_screen.dart';
 import 'introduction_screen.dart';
 
 
@@ -31,7 +33,13 @@ class _SplashScreenState extends State<SplashScreen> {
     var duration = const Duration(seconds: 5);
     return Timer(duration,navigationPage);
   }
-  void navigationPage(){
-    Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => IntroScreen()));
+  void navigationPage() async{
+    final prefs = await SharedPreferences.getInstance();
+    bool? isFirstTime = prefs.getBool("isFirstTime");
+    if(isFirstTime==null) {
+      prefs.setBool("isFirstTime", false);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => IntroScreen()));
+    } else Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> LoginScreen()));
   }
 }
