@@ -14,6 +14,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   var _currentIndex = 0;
+  var _pageIndex = 0;
+
+  List<String> listImages = [
+    'assets/1.png',
+    'assets/2.png',
+    'assets/3.png'];
+
+  final pageController  = PageController();
 
 
   String searchValue = '';
@@ -98,6 +106,47 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
+      body: _currentIndex == 0
+          ? SizedBox(
+        width: double.infinity,
+        height: 200,
+        child: PageView(
+          controller: pageController,
+          children: [
+            Container(
+              color: Colors.red,
+              child:  Image.asset(listImages[0], fit: BoxFit.fill),
+            ),
+            Container(
+              color: Colors.green,
+              child:  Image.asset(listImages[1], fit: BoxFit.fill),
+            ),
+            Container(
+              color: Colors.blue,
+              child:  Image.asset(listImages[2], fit: BoxFit.fill),
+            ),
+
+          ],
+        ),
+      )
+          : _currentIndex == 1
+          ? const Center(
+        child: Text('Likes'),
+      )
+          : _currentIndex == 2
+          ? const Center(
+        child: Text('Search'),
+      )
+          : const Center(
+        child: Text('Profile'),
+      ),
     );
   }
+
+  @override
+  dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
 }
