@@ -4,18 +4,14 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
 
   var _currentIndex = 0;
 
@@ -68,7 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ]
             )
         ),
-           bottomNavigationBar: SalomonBottomBar(
+
+          bottomNavigationBar: SalomonBottomBar(
             currentIndex: _currentIndex,
             onTap: (i) => setState(() => _currentIndex = i),
             items: [
@@ -101,8 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-
     );
   }
 }
-
